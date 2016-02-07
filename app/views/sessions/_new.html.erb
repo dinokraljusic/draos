@@ -1,0 +1,31 @@
+<% provide(:title, "Log in") %>
+<!--<h2>Log in</h2>-->
+<!--<small style="text-align: center">testni podaci: uname: test1234@test.ba  pass:password1234</small>-->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" >
+    <%= form_for(:session, url: login_path) do |f| %>
+
+        <label for="session_email" translate>EMAIL</label>
+        <%= f.email_field :email, class: 'form-control' %>
+
+
+        <label for="session_password" translate>PASSWORD</label>
+
+
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <a href="#resetPassword"><i class="fa fa-comment"></i>
+          <label for="(Forgot password)" translate>   FORGOT_PASSWORD</label>
+        </a>
+        <br/>
+
+        <%= f.submit "{{ 'LOGIN' | translate }}", style: 'margin-top:9px;', class: "btn btn-primary" %>
+
+    <% end %>
+
+    <%= link_to "{{ 'SIGN_UP_NOW' | translate }}", signup_path, class:"fa fa-comment", "data-no-turbolink" => true%> <br />
+
+    <label class="panel-footer" style="font-size:11px;">Testni podaci: <br /> admin: dk15380@etf.unsa.ba 123456789, restoran: kraljusic@outlook.com 123456789, gost: test@test.ba password1234</label>
+
+  </div>
+</div>

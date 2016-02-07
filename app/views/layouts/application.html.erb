@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="probna">
+<head >
+  <!--<script src="controller/routes.js"></script>-->
+  <!--<script src="controller/allUsersCtrl.js"></script>-->
+  <title>Info Stat</title>
+  <%= csrf_meta_tags %>
+  <base href="/">
+  <%= javascript_include_tag "application" %>
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <%= stylesheet_link_tag "application" %>
+
+</head>
+<body >
+<header class="navbar navbar-static-top navbar-inverse">
+  <div class="container-fluid">
+    <%= link_to "Info", '#', id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+    <!--    <li><a translate href="#"> HOME </a></li>-->
+        <!--<li>
+          <a href="#reservation" translate> MAKE_RESERVATION </a></li>-->
+      <!--  <li><%= link_to "Help",   '#' %></li>-->
+      <!-- <% if logged_in? %>
+              <% if is_admin %>
+                <li><a translate href="#admin_panel"> ADMIN_PANEL </a></li>
+            <% else %>
+            <li>
+              <a href="#reservation" translate> MAKE_RESERVATION </a></li>
+            <li>
+            <%end%>
+            <li>
+              <div ng-controller="DropdownCtrl" class="btn-group" dropdown is-open="status.isopen">
+                <button type="button" class="button-nav btn btn-primary dropdown-toggle" dropdown-toggle>
+                  <%= current_user.name %> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+
+                  <li><a href="#profile" translate> EDIT_PROFILE </a></li>
+
+                  <% if is_restaurant %>
+                      <li><a href="#create_restaurant" translate> ADD_RESTAURANT </a></li>
+                  <%end%>
+                  <li class="dropdown-button" > <%= button_to "{{ 'LOGOUT' | translate }}", logout_path, :method => "delete", :class => "button" %></li>
+                </ul>
+              </div>
+            </li>
+
+
+        <% else %>
+            <li><a translate href="#login"> LOGIN </a></li>
+        <% end %>-->
+        <li class="language-icon-placeholder"> <a back-img={{url}} class="language-icon" ng-controller="translateController" ng-click="toggleLanguage()"></a></li>
+      </ul>
+    </nav>
+  </div>
+  <div ng-controller="MessageCtrl">
+    <div Message> </div>
+  </div>
+</header>
+<!--<a href="#/allUsers"> All Users </a>-->
+
+<div class="container-fluid" ng-controller="flashMessageCtrl">
+  <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+
+  <!--  <div class="alert alert-notice" ng-show="flash.notice">
+      {{flash.notice}}
+    </div>
+
+    <div class="alert alert-danger" ng-show="flash.alert">
+      {{flash.alert}}
+    </div>
+  </div>-->
+
+  <%= yield %>
+</div>
+
+</body>
+</html>

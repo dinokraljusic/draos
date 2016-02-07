@@ -1,0 +1,13 @@
+<h2>AllUsers#index</h2>
+
+
+<ul class="users">
+  <p>{{name}}</p>
+  <% @users.each do |user| %>
+      <li>
+        <%=link_to user.name, controller: "api/users", action: "show", id: user.id %>
+        <%= user.lastname %>
+        - <%= user.email %>
+      </li>
+  <% end %>
+</ul>

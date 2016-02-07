@@ -1,0 +1,30 @@
+<% provide(:title, 'Reservation') %>
+<h1><label for="Reservation" translate>MAKE_RESERVATION</label></h1>
+
+<div class="row"  ng-controller="restaurantController">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@reservation, :format => :html, url: reservation_path, html: {method: :post}) do |f| %>
+
+        <label for="restaurant_name" translate>RESTAURANT</label>
+        <input type="text" name="restaurant_name" ng-model="getSelectedRestaurant().name" ng-disabled="true" class="form-control">
+
+        <label for="time_from" translate>TIME_FROM</label>
+
+        <div class="form-control'">
+          <%= datetime_select :reservation, :time_from %>
+        </div>
+        <label for="time_to" translate>TIME_TO</label>
+
+        <div class="form-control'">
+          <%= datetime_select :reservation, :time_to, default: 3.hours.from_now %>
+        </div>
+
+        <label for="num" translate>NUM_PEOPLE</label>
+        <%= f.number_field :num,  in: 1..30.0, step: 1, class: 'form-control'%>
+
+        <%= f.hidden_field :restaurant_id,  class: 'form-control', :value => "{{ getSelectedRestaurant().id }}"%>
+
+        <%= f.submit "{{ 'CREATE_MY_ACCOUNT' | translate }}", class: "btn btn-primary", style: "margin-top:9px;" %>  <!--temp-->
+    <% end %>
+  </div>
+</div>

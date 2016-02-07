@@ -1,0 +1,30 @@
+<% provide(:title, 'Sign up') %>
+<h1><label for="Sign up" translate>SIGN_UP</label></h1>
+
+<div class="row" ng-controller="signupController">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user, :format => :html, url: signup_path, html: { method: :post }) do |f| %>
+        <label for="name" translate>NAME</label>
+        <%= f.text_field :name, class: 'form-control'%>
+
+        <label for="lastname" translate>LAST_NAME</label>
+        <%= f.text_field :lastname, class: 'form-control' %>
+
+        <label for="email" translate>EMAIL</label>
+        <%= f.email_field :email, class: 'form-control' %>
+
+        <label for="password" translate>PASSWORD</label>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label :password_confirmation, "{{ 'PASSWORD_CONFIRMATION' | translate }}" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <!--<div class="g-recaptcha">-->
+            <%= recaptcha_tags display: {theme: 'red', tabindex: 5}, ssl: false, noscript: false %>
+      <!--  </div>-->
+      <!--  <div class="g-recaptcha" data-sitekey="<%= recaptcha_tags %>"></div>-->
+
+        <%= f.submit "{{ 'CREATE_MY_ACCOUNT' | translate }}", class: "btn btn-primary", style:"margin-top:9px;" %>  <!--temp-->
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,205 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Sumana);
+
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  color:rosybrown;
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+.restaurant-list{
+  width: 27%;
+  max-width:280px;
+  min-width:100px;
+  //display: inline-block;
+  float:left;
+  //line-height: 1.7em;
+}
+.navbar-static-top{
+  margin-top:-60px;
+  background: #417fab;//#3b5998
+  //color: #E7E4E4;
+}
+.navbar-right{
+  color: #E7E4E4;
+}
+.btn-restaurant-left{
+  background:white;
+  border:none;
+  width:86%;
+  height:35px;
+  font-size: 18px;
+  margin-bottom: 14px;
+  //line-height: 1.7em;
+}
+
+.btn-restaurant-left:active{
+  background:none;
+}
+
+#map {
+ // height:420px;
+  height:90vh;
+  max-height: 550px;
+  width:75.8%;
+  display:inline-block;
+}
+
+/*.collapse .well{
+  padding-left:5px;
+}*/
+
+.table-striped > tbody > tr:nth-of-type(odd):hover{
+  background-color: #71e5f2;
+}
+.table-striped > tbody > tr:nth-of-type(even):hover{
+  background-color: #71e5f2;
+}
+
+#admin_left{
+  /*float:left;
+  width: 17%;
+  max-width:150px;
+  min-width: 80px;*/
+  width: 17%;
+  max-width:150px;
+  min-width:75px;
+  float:left;
+}
+#admin_right{
+  //float:right;
+  //width:78%;
+  height:90vh;
+  max-height: 550px;
+  width:82.8%;
+  display:inline-block;
+}
+
+/* header */
+.navbar{
+  font-family: 'Sumana', serif;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button-nav{
+  color: #E7E4E4;
+  background: none;
+  border: none;
+  padding-top: 14px;
+  padding-bottom: 10px;
+}
+
+/*.navbar-nav li a{
+  color: #E7E4E4;
+}*/
+.dropdown-menu{
+  background-color: #417fab;
+}
+
+.button{
+  background: transparent;
+  border: none;
+}
+
+.dropdown-button{
+  padding: 3px 20px;
+  //background-color: #417fab;
+}
+
+.language-icon{
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+}
+
+.language-icon-placeholder{
+  background-size: 46px 46px;
+}
+
+.language-icon a{
+  background-size: 32px 32px;
+  //margin-top:15px;
+}
+
+a.language-icon.ng-scope{
+  background-size: 32px 32px;
+  //margin-top:15px;
+}
+
+
+.navbar-inverse .navbar-nav li a{
+  color: #daefff;
+}
+.navbar-inverse .navbar-nav li a:hover{
+  color: #9D9D9D;
+}
+
+#overlay {
+  visibility: hidden;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width:100%;
+  height:100%;
+  text-align:center;
+  z-index: 1000;
+}
+

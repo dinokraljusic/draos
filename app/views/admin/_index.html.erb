@@ -1,0 +1,88 @@
+<div ng-controller="adminController">
+  <table id="admin_left" class="table admin-list">
+    <tr>
+      <td>
+        <button class="btn btn-default btn-restaurant-left" ng-click="usersClick()">{{'USERS' | translate}}</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button class="btn btn-default btn-restaurant-left" ng-click="statsClick()">{{'STATS' | translate}}</button>
+      </td>
+    </tr>
+  </table>
+  <div id="admin_right">
+    <div ng-show="showUsers">
+      <table class="table table-striped table-hover">
+        <tr>
+          <th> {{'NAME' | translate}}</th>
+          <th>{{'LAST_NAME' | translate}}</th>
+          <th>{{ 'EMAIL' | translate}}</th>
+          <!--<td>{{ 'SIGN_IN_COUNT' | translate}}</td>-->
+          <th>{{ 'ROLE' | translate}}</th>
+          <th>{{ 'ACTIVE' | translate}}</th>
+          <th>{{ 'DELETE_USER' | translate}}</th>
+          <th>{{ 'APPLY' | translate}}</th>
+        </tr>
+        <tr ng-repeat="user in users">
+          <td><input type="text" name="name" ng-model="user.name" ng-disabled="user.role_id==1"></td>
+          <td><input type="text" name="lastname" ng-model="user.lastname" ng-disabled="user.role_id==1"></td>
+          <td><input type="email" name="email" ng-model="user.email" ng-disabled="true"></td>
+          <!--<td>{{user.sign_in_count}}</td>-->
+          <td>
+            <select ng-options="role.id as role.name for role in roles" ng-model="user.role_id" ng-disabled="user.role_id==1"></select>
+          </td>
+          <td><input type="checkbox" ng-model="user.active" ng-disabled="user.role_id==1"></td>
+          <td>
+            <button class="glyphicon glyphicon-remove" ng-click="deleteUser(user)" ng-disabled="user.role_id==1"></button>
+          </td>
+          <td>
+            <button class="glyphicon glyphicon-ok" ng-click="saveUser(user)" ng-disabled="user.role_id==1"></button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div ng-show="showStats">
+      &nbsp;&nbsp;{{'STATS_TO_DISPLAY' | translate}}:
+      <select ng-model="selectedItem" ng-change="selectChange()" ng-init="selectedItem='signups'">
+        <option value="signups" selected="selected">{{'USER_SIGNUP_FREQ' | translate}}</option>
+        <option value="rating_history">{{'RATING_HISTORY' | translate}}</option>
+        <option value="number_of_logins">{{'NUMBER_LOGINS' | translate}}</option>
+        <option value="nesto">{{'SOMETHING' | translate}}</option>
+      </select>
+      &nbsp;&nbsp;{{'GRAPH_COLOUR' | translate}}:
+      <select ng-model="selectedColourItem" ng-change="selectColourChange()" ng-init="selectedColourItem='blue'">
+        <option value="blue" selected="selected">{{'BLUE' | translate}}</option>
+        <option value="grey">{{'GREY' | translate}}</option>
+        <option value="red">{{'RED' | translate}}</option>
+        <option value="orange">{{'ORANGE' | translate}}</option>
+        <option value="purple">{{'PURPLE' | translate}}</option>
+        <option value="green">{{'GREEN' | translate}}</option>
+      </select>
+      </br>
+      <div ng-show="selectedItem=='rating_history'">
+        &nbsp;&nbsp;{{'RESTAURANT_TO_DISPLAY' | translate}}:
+        <select ng-options="restaurant.id as restaurant.name for restaurant in restaurants | orderBy:'name'" ng-model="selectedRestaurantItem" ng-change="selectRestaurantChange()"></select>
+      </div>
+      <!--ng-style="{ 'display' : displayLine}"-->
+      <div id="line_div">
+        <canvas id="line" class="chart chart-line" data="data"
+                labels="labels" legend="false" series="series"
+                options="options"
+                colours="colours"
+                click="onClick">
+        </canvas>
+      </div>
+    <!--ng-style="{ 'display' : displayBar }"-->
+      <div id="bar_div">
+        <canvas id="bar" class="chart chart-bar" data="data"
+                labels="labels" legend="false" series="series"
+                options="options"
+                colours="colours"
+                click="onClick">
+        </canvas>
+      </div>
+    </div>
+
+  </div>
+</div>

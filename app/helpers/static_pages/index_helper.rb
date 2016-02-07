@@ -1,0 +1,2 @@
+module StaticPages::IndexHelper
+end

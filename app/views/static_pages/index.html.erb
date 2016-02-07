@@ -1,0 +1,81 @@
+<div class="sadrzaj" ng-controller="mainCtrl">
+  <!--<h1>Places To Eat Main Page</h1>-->
+
+
+  <div id="main">
+
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+    <div ng-view></div>
+  </div>
+  <!--<label translate="SEARCH">SEARCH</label>-->
+  <div ng-show="showRestaurant()" ng-init="init('<%= current_user.id unless current_user.nil? %>')" ng-controller="restaurantController">
+
+    <div class="restaurant-list">
+      <div style="padding-left:70px; padding-bottom:14px">
+        <input type="text" ng-model="pretraga" id="pretragafield">
+      </div>
+      <treecontrol class="tree-classic"
+                   tree-model="dataForTheTree"
+                   options="treeOptions"
+                   on-selection="showSelected(node);"
+                   filter-comparator="comparator"
+                   filter-expression="pretraga"
+                   expanded-nodes="expandedNodes"
+                   selected-node="node1">
+        <button class="btn-restaurant-left" ng-click="openNodeInfoWindow($event, node);">{{node.name}}</button>
+      </treecontrol>
+    </div>
+
+   <!--<table class="table restaurant-list">
+      <tr>
+        <td>
+          <input type="text" class="" ng-change="change()" value=" " ng-controller="restaurantController" ng-model="pretraga" id="pretragafield">
+        </td>
+        <td style="width: 20px;">
+          <div class="glyphicon glyphicon-search" style="padding-top:4px;"></div>
+        </td>
+      </tr>
+      <tr ng-repeat="restaurant in restaurants | filter: filterByName" ng-controller="restaurantController">
+        <td colspan="2">
+          <button class="btn btn-default btn-restaurant-left" ng-click="setIsCollapsed(restaurant); openInfoWindow($event, restaurant)">{{restaurant.name}}</button>
+          <div collapse="restaurant.isCollapsed">
+            <div class="well well-lg" ng-controller="RatingCtrl">
+              <label translate="ADDRESS"></label>: {{restaurant.address}} </br>
+              <label translate="AVERAGE_RATING"/></label>:
+              <star-rating ng-model=restaurant.avg readonly="true"></star-rating>
+              <% if logged_in? %>
+                  <table>
+                    <tr ng-repeat="rate in ratings | filter:{restaurant_id: restaurant.id}">
+                      <td><label translate="MY_RATING"></label>:
+                        <star-rating ng-model=rate.rate readonly="false" on-rating-selected="rateFunction(rating, rate)"></star-rating>
+                      </td>
+                    </tr>
+                    <tr ng-show="(ratings | filter:{restaurant_id: restaurant.id}).length == 0">
+                      <td><label translate="NEW_RATING"></label>:
+                        <star-rating ng-model=ratingNew on-rating-selected="newRateFunction(rating, restaurant.id)"></star-rating>
+                      </td>
+                    </tr>
+                  </table>
+                  <a href="#reservation" translate> MAKE_RESERVATION </a>
+              <% end %>
+              <div ng-show="showMenu(restaurant.menu)">
+                &lt;!&ndash;<a href={{createMenuLink(restaurant.menu)}}>menu</a>{{ createMenuLink(restaruant.menu) }}"&ndash;&gt;
+                <%= link_to "{{ 'MENU' | translate }}", "{{restaurant.menu }}" %>
+              </div>
+
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>-->
+
+    <div id="map" class="map" ng-controller="MapCtrl">
+      <div></div>
+      <!-- <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+         <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+       </div>-->
+    </div>
+
+  </div>
+</div>

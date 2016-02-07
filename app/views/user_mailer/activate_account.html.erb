@@ -1,0 +1,12 @@
+#encoding: utf-8
+<h1>Aktivacija accounta</h1>
+
+<p>Za aktivaciju accounta, kliknite na link ispod:</p>
+
+<%= activate_user_url(:jwt => @user.generate_token) %>
+
+<p>Link će postati nevažeći za 2 sata.</p>
+
+<p>
+  Ako niste zahtijevali aktivaciju accounta, ignorišite ovaj mail; vaša lozinka ?e ostati nepromijenjena.
+</p>

@@ -1,0 +1,35 @@
+
+
+
+<div class="row" >
+  <div class="col-md-6 col-md-offset-3">
+    <form name="Make reservation" style="text-align:center">
+
+      <br />
+
+
+
+      <input type="hidden" data-ng-model="reservation.Id" />
+
+      <b>Name:</b>
+      <input type="text" data-ng-model="reservation.Name" required />  <br />
+
+      <br /><b>Time:</b>
+      <input type="datetime" data-ng-model="reservation.Time" required /><br />
+
+      <br /> <b>Number of people:</b>
+      <input type="number" data-ng-model="reservation.number" required /><br />
+
+
+      <br />
+      <br />
+
+      <button data-ng-click="submit()">Submit</button>
+
+
+    </form>
+    </section>
+
+  </div>
+</div>
+
